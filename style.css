@@ -1,0 +1,894 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: #070604;
+    color: white;
+
+}
+
+
+/* =====================================
+   PANTALLA INICIAL
+===================================== */
+
+.inicio {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #3b2a08 0%,
+            #171108 40%,
+            #050505 100%
+        );
+
+    transition:
+        opacity 2s ease,
+        visibility 2s ease;
+}
+
+.inicio.oculto {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+.inicio h1 {
+    margin-top: 20px;
+
+    font-size: clamp(2rem, 6vw, 4rem);
+
+    font-weight: normal;
+
+    color: #fff5c7;
+}
+
+
+.inicio p {
+    margin-top: 15px;
+
+    font-family: Arial, sans-serif;
+
+    color: #d8cda7;
+}
+
+
+#boton {
+    margin-top: 35px;
+
+    padding: 15px 32px;
+
+    border: 1px solid #ffe071;
+
+    border-radius: 50px;
+
+    background: rgba(255, 215, 70, .1);
+
+    color: #ffe071;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    backdrop-filter: blur(5px);
+}
+
+#boton:hover {
+    transform: scale(1.08);
+
+    background: #ffd84d;
+
+    color: #241b05;
+
+    box-shadow:
+        0 0 20px #ffd84d,
+        0 0 50px rgba(255, 216, 77, .5);
+}
+
+
+/* =====================================
+   JARDÍN DE FLORES GRANDES
+===================================== */
+
+#jardin {
+    position: fixed;
+    inset: 0;
+
+    z-index: 8;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+/* =====================================
+   FLOR GRANDE
+===================================== */
+
+.flor-grande {
+    position: absolute;
+
+    width: 150px;
+    height: 190px;
+
+    opacity: 0;
+
+    transform:
+        scale(0)
+        rotate(-15deg);
+
+    animation:
+        crecerFlor 2s ease forwards,
+        moverFlor 5s ease-in-out infinite;
+
+    transform-origin: center bottom;
+}
+
+
+/* =====================================
+   PÉTALOS DE LA FLOR
+===================================== */
+
+.petalo-flor {
+    position: absolute;
+
+    width: 45px;
+    height: 75px;
+
+    left: 52px;
+    top: 8px;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #fff5a3 0%,
+            #ffd83d 45%,
+            #e5a900 100%
+        );
+
+    transform-origin:
+        50% 90%;
+}
+
+
+/* Posiciones de los pétalos */
+
+.petalo-flor:nth-child(1) {
+    transform: rotate(0deg) translateY(-20px);
+}
+
+.petalo-flor:nth-child(2) {
+    transform: rotate(45deg) translateY(-20px);
+}
+
+.petalo-flor:nth-child(3) {
+    transform: rotate(90deg) translateY(-20px);
+}
+
+.petalo-flor:nth-child(4) {
+    transform: rotate(135deg) translateY(-20px);
+}
+
+.petalo-flor:nth-child(5) {
+    transform: rotate(180deg) translateY(-20px);
+}
+
+.petalo-flor:nth-child(6) {
+    transform: rotate(225deg) translateY(-20px);
+}
+
+.petalo-flor:nth-child(7) {
+    transform: rotate(270deg) translateY(-20px);
+}
+
+.petalo-flor:nth-child(8) {
+    transform: rotate(315deg) translateY(-20px);
+}
+
+
+/* =====================================
+   CENTRO DE LA FLOR
+===================================== */
+
+.centro-flor {
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    left: 48px;
+    top: 62px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #8c5100 0%,
+            #c67a00 45%,
+            #704000 100%
+        );
+
+    box-shadow:
+        0 0 10px rgba(255, 190, 30, .5);
+
+    z-index: 5;
+}
+
+
+/* Pequeños puntitos del centro */
+
+.centro-flor::after {
+    content: "••••••••••••";
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: #ffe48a;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =====================================
+   TALLO
+===================================== */
+
+.tallo {
+    position: absolute;
+
+    width: 7px;
+    height: 90px;
+
+    left: 74px;
+    top: 112px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #31551c,
+            #6b963b,
+            #31551c
+        );
+
+    transform-origin: top;
+}
+.linea-1 {
+    width: 65%;
+    margin-bottom: 5px;
+}
+
+.linea-2 {
+    width: 85%;
+    margin-bottom: 8px;
+}
+.linea-3 {
+    width: 75%;
+    margin-bottom: 5px;
+}
+.espacio {
+    height: 18px;
+}
+.linea-4 {
+    width: 55%;
+
+    color: #d2d1ce;
+
+    font-weight: bold;
+
+    font-size: 1.15em;
+
+    text-shadow:
+        0 0 10px rgba(255, 216, 77, .8),
+        0 0 25px rgba(255, 216, 77, .5);
+}
+
+.linea-5 {
+    width: 70%;
+
+    color: #ecefef;
+
+    font-weight: bold;
+
+    font-size: 1.15em;
+
+    text-shadow:
+        0 0 10px rgba(255, 216, 77, .8),
+        0 0 25px rgba(255, 216, 77, .5);
+}
+
+.corazon-texto::before {
+    content: "♥";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scaleX(1.15);
+
+    font-size: min(100vw, 1550px);
+
+    color: rgba(222, 20, 30, 0.8);
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    text-shadow:
+        0 0 40px rgba(255, 216, 77, .12),
+        0 0 90px rgba(255, 216, 77, .08);
+}
+.final-corazon {
+    margin-top: 20px;
+
+    font-size: 70px;
+
+    color: #d32a2a;
+
+    text-shadow:
+        0 0 15px rgba(255, 216, 77, .9),
+        0 0 35px rgba(255, 216, 77, .6);
+
+    animation: latido 1.5s ease-in-out infinite;
+}
+/* =====================================
+   HOJAS
+===================================== */
+
+.hoja {
+    position: absolute;
+
+    width: 45px;
+    height: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6e9b3d,
+            #31551c
+        );
+
+    border-radius:
+        100% 0 100% 0;
+}
+
+.hoja-1 {
+    left: 38px;
+    top: 145px;
+
+    transform: rotate(25deg);
+}
+
+.hoja-2 {
+    left: 78px;
+    top: 160px;
+
+    transform:
+        rotate(150deg);
+}
+
+
+/* =====================================
+   ANIMACIÓN FLORES GRANDES
+===================================== */
+
+@keyframes crecerFlor {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0)
+            rotate(-30deg);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            scale(1.15)
+            rotate(8deg);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0deg);
+    }
+}
+
+
+@keyframes moverFlor {
+
+    0%,
+    100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -12px;
+    }
+}
+
+
+/* =====================================
+   FLORES EMOJI PEQUEÑAS
+===================================== */
+
+#flores {
+    position: fixed;
+    inset: 0;
+
+    z-index: 15;
+
+    pointer-events: none;
+}
+
+
+.flor {
+    position: absolute;
+
+    opacity: 0;
+
+    animation:
+        aparecerFlor 2s ease forwards,
+        balanceo 4s ease-in-out infinite;
+
+    filter:
+        drop-shadow(
+            0 0 8px rgba(255, 220, 80, .8)
+        );
+}
+
+
+@keyframes aparecerFlor {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0)
+            rotate(-40deg);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            scale(1.2)
+            rotate(10deg);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0deg);
+    }
+}
+
+
+@keyframes balanceo {
+
+    0%,
+    100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -15px;
+    }
+}
+
+
+/* =====================================
+   PÉTALOS QUE CAEN
+===================================== */
+
+#petalos {
+    position: fixed;
+    inset: 0;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+.petalo {
+    position: absolute;
+
+    top: -50px;
+
+    color: #ffd84d;
+
+    opacity: .8;
+
+    animation: caer linear forwards;
+
+    filter:
+        drop-shadow(
+            0 0 5px rgba(255, 215, 70, .5)
+        );
+}
+
+
+@keyframes caer {
+
+    0% {
+        transform:
+            translateY(-50px)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =====================================
+   MENSAJE FINAL
+===================================== */
+.mensaje {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    opacity: 0;
+    transform: scale(.7);
+    animation-duration: 2s;
+    pointer-events: none;
+
+    transition:
+        opacity 3s ease,
+        transform 3s ease;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(55, 38, 5, .25),
+            rgba(0, 0, 0, .5)
+        );
+
+}
+
+.mensaje.visible {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+.mensaje h2 {
+    position: relative;
+    z-index: 12;
+
+    margin: 0 0 25px 0;
+
+    font-size: clamp(2.8rem, 7vw, 5rem);
+
+    color: white;
+
+    text-shadow:
+        0 0 10px rgba(255, 216, 77, .8),
+        0 0 25px rgba(255, 216, 77, .6),
+        0 0 50px rgba(255, 216, 77, .4);
+}
+
+.mensaje p {
+    font-size:
+        clamp(1.3rem, 4vw, 2rem);
+    z-index: 12;
+
+    line-height: 1.7;
+
+    color: #fff8dc;
+
+    text-shadow:
+        0 0 10px rgba(255, 215, 70, .4);
+
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 30px;
+    position: relative;
+}
+
+
+
+.mensaje strong {
+    color: #ffd84d;
+
+    font-size: 1.3em;
+}
+.corazon-texto {
+    position: relative;
+
+    width: min(90vw, 850px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: #fff8dc;
+
+    font-size: clamp(1.2rem, 3.2vw, 2rem);
+
+    line-height: 1.55;
+
+    text-shadow:
+        0 0 10px rgba(255, 215, 70, .4);
+
+    z-index: 2;
+}
+
+.final-corazon {
+    margin-top: 30px;
+
+    font-size: 70px;
+
+    color: #ffd84d;
+
+    animation: latido 1.5s infinite;
+
+    text-shadow:
+        0 0 15px #ffd84d,
+        0 0 40px #ffcf33;
+}
+
+
+.brillo {
+    position: absolute;
+
+    top: 20%;
+
+    font-size: 40px;
+
+    color: #ffe477;
+
+    animation: parpadear 2s infinite;
+}
+
+
+/* =====================================
+   DESTELLOS
+===================================== */
+
+.luz {
+    position: fixed;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #fff2a8;
+
+    z-index: 30;
+
+    pointer-events: none;
+
+    box-shadow:
+        0 0 10px #fff3a0,
+        0 0 25px #ffd84d;
+
+    animation:
+        subirLuz 2s ease-out forwards;
+}
+
+
+@keyframes subirLuz {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-200px)
+            scale(0);
+    }
+}
+
+
+/* =====================================
+   ANIMACIONES
+===================================== */
+
+@keyframes latido {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+@keyframes parpadear {
+
+    0%,
+    100% {
+        opacity: .3;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+
+/* =====================================
+   CELULAR
+===================================== */
+/* =====================================
+   CELULAR
+===================================== */
+
+@media (max-width: 600px) {
+
+    .flor-grande {
+        transform: scale(.75);
+    }
+
+    .inicio h1 {
+        font-size: 2rem;
+    }
+
+    /* MENSAJE FINAL */
+
+    .mensaje {
+        padding: 15px;
+    }
+
+    .mensaje h2 {
+        font-size: 2.3rem;
+        margin: 0 0 18px 0;
+
+        white-space: nowrap;
+    }
+
+    .corazon-texto {
+        width: 95vw;
+
+        font-size: 1.05rem;
+
+        line-height: 1.5;
+    }
+
+    /* Mantiene la forma de corazón */
+
+    .linea-1 {
+        width: 80%;
+        margin-bottom: 5px;
+    }
+
+    .linea-2 {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .linea-3 {
+        width: 90%;
+        margin-bottom: 5px;
+    }
+
+    .espacio {
+        height: 12px;
+    }
+
+    .linea-4 {
+        width: 70%;
+        font-size: 1.15em;
+    }
+
+    .linea-5 {
+        width: 90%;
+        font-size: 1.15em;
+    }
+
+    /* Corazón grande de fondo */
+
+    .corazon-texto::before {
+        font-size: 700px;
+
+        transform:
+            translate(-50%, -50%)
+            scaleX(1.15);
+    }
+
+    /* Corazón final */
+
+    .final-corazon {
+        margin-top: 18px;
+        font-size: 60px;
+    }
+
+    /* Destello */
+
+    .brillo {
+        top: 12%;
+        font-size: 30px;
+    }
+}
